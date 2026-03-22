@@ -32,3 +32,30 @@ lint-fix:
 
 test:
 	NODE_ENV=test npm test -s
+
+docker-build:
+	docker compose build
+
+docker-up:
+	docker compose up -d
+
+docker-down:
+	docker compose down
+
+docker-logs:
+	docker compose logs -f app
+
+docker-shell:
+	docker compose exec app sh
+
+docker-migrate:
+	docker compose exec app npm run migrate
+
+docker-test:
+	docker compose exec app npm test
+
+docker-clean:
+	docker compose down -v
+
+docker-rebuild:
+	docker compose down && docker compose build --no-cache && docker compose up -d
